@@ -1,1 +1,1 @@
-export const name = 'yuyang'
+export const name = 'miniPack'
