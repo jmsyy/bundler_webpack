@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const babylon = require('babylon')
 const traverse = require('babel-traverse').default;
-const babel = require('babel-core');
+const { transformFromAst } = require('babel-core');
 
 let ID = 0;
 
@@ -19,7 +19,7 @@ function createAsset (fileName) {
     })
 
     const id = ID++;
-    const {code}  = babel.transformFromAst(ast, null, {
+    const {code}  = transformFromAst(ast, null, {
       presets:['env'],
     })
 
@@ -88,6 +88,8 @@ function  bundle(graph) {
   return result;
 }
 const graph = createGraph('./example/entry.js')
-const result = bundle(graph)
-console.log(result);
+console.log(graph);
+
+// const result = bundle(graph)
+// console.log(result);
 
